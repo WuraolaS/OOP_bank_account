@@ -57,19 +57,32 @@ class Bank_Account:
 # learning
 class Bank_Account:
     #self it used to access variables within a class. It has to be the first parameter in a function
-    def __init__(self, account_number,starting_balance):
+    def __init__(self, account_number,starting_balance,current_balance):
         self.account_number = account_number
         self.starting_balance = starting_balance
         self.current_balance = starting_balance
     def deposit(self,deposit_amount):
         self.current_balance = self.starting_balance + deposit_amount
+        return self.current_balance
     def withdraw(self,withdrawal_amount):
         self.current_balance = self.starting_balance - withdrawal_amount
+        return self.current_balance
+    def get_current_balance(self):
+        return self.current_balance
 
-#initiated object
-b_acount = Bank_Account(234, 0)
+#initiated a new bank account object
+b_acount = Bank_Account(3432,0,0)
 
-b_acount.deposit(200)
+action = input("Would you like to make a deposit or withdraw? ")
+if action == "withdraw":
+    withdraw_amount = int(input("please enter the withdrawal ammount "))
+    b_acount.withdraw(withdraw_amount)
+elif action == "deposit":
+    depo_amount = int(input("please enter the depost ammount "))
+    b_acount.deposit(depo_amount)
+
+print(f"You now have {b_acount.get_current_balance()} in your bank account")
+
 #if I deposit 200 withdrawing 50 should return 50 hmm.
 # b_acount.withdraw(50)
-print(f"{b_acount.account_number} has {b_acount.current_balance} in the account")
+#print(f"{b_acount.account_number} has {b_acount.current_balance} in the account")
