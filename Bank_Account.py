@@ -1,4 +1,15 @@
 #This is an OOP python project to create a Bank Account
+#variables are:
+#first name
+#last name
+#account number
+#starting balance
+#current balance
+
+#Methods
+#withdraw
+#deposit
+#interaccount transfer
 
 # Bank Account has a checkings and savings account
 # Checkings Account is a bank account - it inherits the bank accout class
@@ -9,7 +20,9 @@
 # learning
 class Bank_Account:
     #self it used to access variables within a class. It has to be the first parameter in a function
-    def __init__(self, account_number,starting_balance,current_balance):
+    def __init__(self, first_name, last_name, account_number,starting_balance,current_balance):
+        self.first_name = first_name
+        self.last_name = last_name
         self.account_number = account_number
         self.starting_balance = starting_balance
         self.current_balance = starting_balance
@@ -22,8 +35,15 @@ class Bank_Account:
     def get_current_balance(self):
         return self.current_balance
 
+class Savings_Account(Bank_Account):
+    pass
+
+class Checkings_Account(Bank_Account):
+    pass
+
+
 #initiated a new bank account object
-b_acount = Bank_Account(3432,0,0)
+b_acount = Bank_Account("Wura","Sonubi",3432,0,0)
 
 action = input("Would you like to make a deposit or withdraw? ")
 if action == "withdraw":
